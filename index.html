@@ -229,6 +229,13 @@ main{width:100%;overflow:hidden}
  .checkout-flow{grid-template-columns:1fr}
  .footer{margin-top:8px}
 }
+
+/* Ajuste final da capa: sem contorno e foto mais ampla */
+.hero,.hero-photo,.hero-photo img{border:0!important;outline:0!important;box-shadow:none!important}
+.hero{border-radius:0!important}
+.hero-photo{overflow:hidden;min-width:0}
+.hero-photo img{width:108%!important;height:108%!important;max-width:none;object-fit:cover!important;object-position:center!important;transform:scale(1.04);border-radius:0!important}
+@media(max-width:760px){.hero-photo{width:100%;}.hero-photo img{width:106%!important;height:106%!important;}}
 </style></head>
 <body>
 <main>
