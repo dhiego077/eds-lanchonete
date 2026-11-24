@@ -154,6 +154,81 @@ img{max-width:100%;height:auto}
  .footer{grid-template-columns:1fr;padding:20px 14px 28px;margin-top:8px}
  .footer img{height:120px}
 }
+
+/* RESPONSIVIDADE REFEITA */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:320px}
+main{width:100%;overflow:hidden}
+.wrap{width:min(1280px,calc(100% - 40px));margin-inline:auto}
+.hero.wrap{width:100%;max-width:none;margin:0;min-height:clamp(360px,38vw,560px);padding:112px max(20px,calc((100vw - 1280px)/2)) 0;grid-template-columns:minmax(0,.9fr) minmax(0,1.35fr);gap:clamp(16px,3vw,44px);align-items:stretch}
+.top{left:0;right:0;width:100%;max-width:1280px;margin-inline:auto;padding:8px 20px;grid-template-columns:100px minmax(0,1fr) auto}
+.brand{width:82px;height:82px}
+.brand img{width:100%;height:100%;object-fit:contain;object-position:center}
+.hero-copy{align-self:center;padding:28px 0;max-width:540px}
+.hero-photo{height:100%;min-height:250px;width:100%;padding:0;align-self:stretch}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.menu,.drinks-section,.benefits,.builder,.checkout,.footer{width:min(1280px,calc(100% - 40px));margin-left:auto;margin-right:auto}
+.menu{margin-top:0}
+.products{grid-template-columns:repeat(3,minmax(0,1fr))}
+.product{min-width:0}
+.drink-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.builder{grid-template-columns:minmax(0,30%) minmax(0,46%) minmax(0,24%)}
+.footer{grid-template-columns:1fr}
+@media(max-width:1100px){
+ .hero.wrap{min-height:390px;padding:100px 24px 0;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+ .top{padding-inline:24px}
+ .menu,.drinks-section,.benefits,.builder,.checkout,.footer{width:calc(100% - 32px)}
+ .product{grid-template-columns:48% 52%}
+ .product>img{height:112px}
+ .pinfo h3{font-size:clamp(16px,2vw,22px)}
+ .builder{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
+ .selected-product{grid-row:span 2}
+}
+@media(max-width:760px){
+ .hero.wrap{min-height:0;padding:105px 18px 0;grid-template-columns:1fr;gap:0}
+ .top{grid-template-columns:76px minmax(0,1fr) auto;gap:8px;padding:8px 14px}
+ .brand{width:64px;height:64px}
+ .nav{gap:8px 12px;flex-wrap:wrap}
+ .nav a{font-size:11px}
+ .order-btn{font-size:11px;padding:9px 12px}
+ .hero-copy{max-width:none;text-align:center;padding:26px 8px 18px}
+ .hero h1{font-size:clamp(36px,8vw,52px)}
+ .hero p{margin:0 auto;max-width:420px}
+ .hero .cta{margin:12px 0 0}
+ .hero-photo{height:clamp(190px,48vw,340px);min-height:0;width:100%;margin:0}
+ .menu,.drinks-section,.benefits,.builder,.checkout,.footer{width:calc(100% - 24px)}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .drink-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .builder{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr)}
+ .selected-product{grid-row:auto}
+ .cart-panel{grid-column:1/-1}
+ .checkout{grid-template-columns:1fr}
+ .checkout-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ .hero.wrap{padding:0 0 0;display:flex;flex-direction:column}
+ .top{position:relative;order:0;display:flex;flex-wrap:wrap;justify-content:space-between;padding:8px 12px;background:#031803}
+ .brand{width:58px;height:58px}
+ .nav{order:3;width:100%;justify-content:center;gap:7px 12px}
+ .order-btn{margin-left:auto}
+ .hero-copy{order:1;padding:24px 16px 16px}
+ .hero-photo{order:2;height:clamp(180px,58vw,270px);min-height:0}
+ .menu,.drinks-section,.benefits,.builder,.checkout,.footer{width:100%;border-radius:0}
+ .menu{padding:14px 10px 18px}
+ .products{grid-template-columns:1fr}
+ .drink-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .drink-card{padding:8px}
+ .drink-card img{height:100px}
+ .benefits{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .builder{grid-template-columns:1fr}
+ .selected-product{grid-row:auto}
+ .options{padding:18px 12px}
+ .ingredients{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .cart-panel{grid-column:auto;padding:0 12px 16px}
+ .checkout{padding:12px;gap:10px}
+ .checkout-flow{grid-template-columns:1fr}
+ .footer{margin-top:8px}
+}
 </style></head>
 <body>
 <main>
