@@ -244,7 +244,23 @@ main{width:100%;overflow:hidden}
 .hero-photo img{display:block!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;object-position:center!important;border:0!important;border-radius:0!important;box-shadow:none!important}
 @media(max-width:900px){.hero{padding-top:112px!important}}
 @media(max-width:560px){.hero{padding-top:0!important}.hero-photo img{width:100%!important;height:auto!important;object-fit:contain!important}}
-</style></head>
+</style>
+<style>
+/* Destaque dos tamanhos e botão Escolher */
+.product .prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:9px 0}
+.product .price{background:#fff!important;color:#063b12!important;border:2px solid #ffe000;border-radius:10px;padding:7px 5px!important;text-align:center;font-size:12px!important;font-weight:900;line-height:1.1;box-shadow:0 2px 0 rgba(0,0,0,.22)}
+.product .price::first-line{font-size:12px;font-weight:900}
+.product .price b{display:block;color:#063b12;font-size:clamp(16px,1.6vw,21px)!important;margin-top:4px;white-space:nowrap}
+.product .choose-product{display:block;width:100%;min-height:42px;margin:9px 0 2px!important;padding:10px 8px!important;background:#ffe000!important;color:#082b0b!important;border:2px solid #fff!important;border-radius:12px!important;font-size:15px!important;font-weight:1000!important;letter-spacing:.3px;box-shadow:0 3px 0 #b89f00;transition:transform .15s,filter .15s}
+.product .choose-product:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.product .choose-product:active{transform:translateY(1px);box-shadow:0 1px 0 #b89f00}
+@media(max-width:520px){
+ .product .price{padding:7px 4px!important;font-size:12px!important}
+ .product .price b{font-size:18px!important}
+ .product .choose-product{min-height:44px;font-size:16px!important}
+}
+</style>
+</head>
 <body>
 <main>
 <section class="wrap hero" id="inicio">
