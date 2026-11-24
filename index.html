@@ -260,6 +260,65 @@ main{width:100%;overflow:hidden}
  .product .choose-product{min-height:44px;font-size:16px!important}
 }
 </style>
+
+<style>
+/* Ajuste fino dos preços: alinhamento e contraste */
+.product .pinfo{width:100%;min-width:0;box-sizing:border-box}
+.product .prices{
+ display:flex!important;
+ flex-direction:row!important;
+ align-items:stretch!important;
+ justify-content:center!important;
+ width:100%!important;
+ gap:8px!important;
+ margin:10px 0!important;
+ padding:0!important;
+ box-sizing:border-box!important;
+}
+.product .prices .price{
+ flex:1 1 0!important;
+ width:0!important;
+ min-width:0!important;
+ min-height:62px!important;
+ display:flex!important;
+ flex-direction:column!important;
+ align-items:center!important;
+ justify-content:center!important;
+ gap:4px!important;
+ box-sizing:border-box!important;
+ padding:7px 3px!important;
+ margin:0!important;
+ background:#fff!important;
+ color:#063b12!important;
+ -webkit-text-fill-color:#063b12!important;
+ border:2px solid #ffe000!important;
+ border-radius:10px!important;
+ text-align:center!important;
+ font-size:13px!important;
+ font-weight:900!important;
+ line-height:1.15!important;
+ opacity:1!important;
+ box-shadow:0 2px 0 rgba(0,0,0,.2)!important;
+}
+.product .prices .price b{
+ display:block!important;
+ width:100%!important;
+ margin:0!important;
+ color:#063b12!important;
+ -webkit-text-fill-color:#063b12!important;
+ font-size:clamp(15px,1.5vw,20px)!important;
+ font-weight:1000!important;
+ line-height:1.1!important;
+ text-align:center!important;
+ white-space:nowrap!important;
+ opacity:1!important;
+}
+@media(max-width:520px){
+ .product .prices{gap:7px!important}
+ .product .prices .price{min-height:60px!important;font-size:13px!important}
+ .product .prices .price b{font-size:18px!important}
+}
+</style>
 </head>
 <body>
 <main>
