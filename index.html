@@ -490,7 +490,15 @@ body{overflow-x:hidden!important}main{background:#fff!important}
   .product .prices .size-choice b{font-size:clamp(13px,1.15vw,16px)!important;letter-spacing:-.35px!important;white-space:nowrap!important}
 }
 </style>
-</head>
+<style id="zoom-imagens-lanches">
+.product>img{cursor:zoom-in;transition:transform .18s ease}
+.product>img:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+#sandwichZoom{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(0,0,0,.88)}
+#sandwichZoom.open{display:flex}
+#sandwichZoom img{display:block;max-width:min(94vw,1000px);max-height:86vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 12px 48px rgba(0,0,0,.5)}
+#sandwichZoom .zoom-close{position:absolute;top:16px;right:18px;width:44px;height:44px;border:0;border-radius:50%;background:#ffd400;color:#092b0e;font-size:30px;font-weight:900;line-height:1;cursor:pointer}
+#sandwichZoom .zoom-hint{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#fff;font-size:13px}
+</style></head>
 <body>
 <main>
 <section class="wrap hero" id="inicio">
@@ -547,4 +555,18 @@ function renderCart(){if(!cart.length){$('cartItems').innerHTML='Seu carrinho es
 $('addCart').onclick=()=>{let p=products[chosen],sal=[...document.querySelectorAll('#salads input:checked')].map(x=>x.value),sau=[...document.querySelectorAll('#sauces input:checked')].map(x=>x.value);cart.push({name:p.name,size:sandwichSize+' cm',price:sandwichSize===15?p.p15:p.p30,qty:1,details:`Saladas: ${sal.join(', ')||'Nenhuma'} | Molhos: ${sau.join(', ')||'Nenhum'}`});document.querySelectorAll('#salads input,#sauces input').forEach(x=>x.checked=false);renderCart()};
 document.querySelectorAll('input[name=receive]').forEach(x=>x.onchange=()=>{let delivery=x.value==='Entrega';$('neighborhood').disabled=!delivery;$('address').disabled=!delivery;if(!delivery){$('neighborhood').value='';$('address').value=''}renderCart()});$('neighborhood').disabled=true;$('address').disabled=true;$('neighborhood').onchange=renderCart;
 $('whatsapp').onclick=()=>{if(!cart.length){alert('Adicione pelo menos um item ao pedido.');return}let name=$('customer').value.trim(),receive=document.querySelector('input[name=receive]:checked').value,neigh=$('neighborhood').value,address=$('address').value.trim();if(!name){alert('Informe seu nome.');return}if(receive==='Entrega'&&(!neigh||!address)){alert('Informe bairro e endereço para entrega.');return}let payment=document.querySelector('input[name=payment]:checked').value,sub=cart.reduce((a,b)=>a+b.price*b.qty,0),fee=deliveryFee(),lines=cart.map(it=>`• ${it.qty}x ${it.name} ${it.size||it.drinkSize||''} — ${brl(it.price*it.qty)}\n  ${it.details}`).join('\n');let msg=`Olá! Quero fazer um pedido na ED's.\n\nCliente: ${name}\n\nPEDIDO:\n${lines}\n\nRecebimento: ${receive}${receive==='Entrega'?`\nBairro: ${neigh}\nEndereço: ${address}`:''}\nPagamento: ${payment}\nSubtotal: ${brl(sub)}\nTaxa de entrega: ${brl(fee)}\nTOTAL: ${brl(sub+fee)}`;window.open('https://wa.me/5598981527731?text='+encodeURIComponent(msg),'_blank')};renderCart();
+</script><div id="sandwichZoom" role="dialog" aria-modal="true" aria-label="Imagem ampliada do lanche"><button class="zoom-close" type="button" aria-label="Fechar imagem ampliada">&times;</button><img src="" alt=""><div class="zoom-hint">Clique fora da imagem ou no X para fechar</div></div><script>
+(function(){
+ const layer=document.getElementById('sandwichZoom');
+ const enlarged=layer.querySelector('img');
+ const close=()=>{layer.classList.remove('open');enlarged.src='';};
+ document.getElementById('products').addEventListener('click',event=>{
+  const photo=event.target.closest('.product>img');
+  if(!photo)return;
+  enlarged.src=photo.src;enlarged.alt=photo.alt+' ampliado';
+  layer.classList.add('open');
+ });
+ layer.addEventListener('click',event=>{if(event.target===layer||event.target.closest('.zoom-close'))close();});
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&layer.classList.contains('open'))close();});
+})();
 </script></body></html>
